@@ -1,0 +1,29 @@
+<UserControl x:Class="FacturacionArca.Wpf.Views.HistorialComprobantesView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <DockPanel>
+    <StackPanel Orientation="Horizontal" DockPanel.Dock="Top" Margin="0,0,0,6">
+      <TextBlock Text="Buscar:" Margin="0,0,4,0"/>
+      <TextBox Width="200" Text="{Binding Texto, UpdateSourceTrigger=PropertyChanged}"/>
+      <TextBlock Text="Desde:" Margin="12,0,4,0"/>
+      <DatePicker SelectedDate="{Binding Desde}"/>
+      <TextBlock Text="Hasta:" Margin="12,0,4,0"/>
+      <DatePicker SelectedDate="{Binding Hasta}"/>
+      <Button Content="Buscar" Command="{Binding BuscarCommand}" Margin="12,0,0,0"/>
+    </StackPanel>
+    <DataGrid ItemsSource="{Binding Resultados}" AutoGenerateColumns="False" IsReadOnly="True">
+      <DataGrid.Columns>
+        <DataGridTextColumn Header="Tipo" Binding="{Binding Tipo}"/>
+        <DataGridTextColumn Header="Pto.Vta" Binding="{Binding PuntoVenta}"/>
+        <DataGridTextColumn Header="Número" Binding="{Binding Numero}"/>
+        <DataGridTextColumn Header="Fecha" Binding="{Binding FechaEmision, StringFormat=dd/MM/yyyy}"/>
+        <DataGridTextColumn Header="Cliente" Binding="{Binding Receptor.RazonSocial}" Width="*"/>
+        <DataGridTextColumn Header="CUIT/Doc" Binding="{Binding Receptor.NumeroDocumento}"/>
+        <DataGridTextColumn Header="Mon" Binding="{Binding CodigoMoneda}"/>
+        <DataGridTextColumn Header="Total" Binding="{Binding ImporteTotal, StringFormat=N2}"/>
+        <DataGridTextColumn Header="CAE" Binding="{Binding Cae.Numero}"/>
+        <DataGridTextColumn Header="Vto.CAE" Binding="{Binding Cae.FechaVencimiento, StringFormat=dd/MM/yyyy}"/>
+      </DataGrid.Columns>
+    </DataGrid>
+  </DockPanel>
+</UserControl>

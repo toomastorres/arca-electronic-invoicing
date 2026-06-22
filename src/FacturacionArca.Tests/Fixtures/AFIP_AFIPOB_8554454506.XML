@@ -1,0 +1,208 @@
+<!-- Fixture de prueba. Los MONTOS son ILUSTRATIVOS: no son los valores originales,
+     sólo sirven para demostrar el funcionamiento del programa. -->
+<Comprobante>
+<Proforma>2016T0000057</Proforma>
+<CodigoTipoComprobante>1</CodigoTipoComprobante>
+<NumeroPuntoventa></NumeroPuntoVenta>
+<NumeroComprobante></NumeroComprobante>
+<FechaEmision>04/03/2016</FechaEmision>
+<CodigoTipoDocumento>80</CodigoTipoDocumento>
+<NumeroDocumento>30711111117</NumeroDocumento>
+<IVACondicion>RESPONSABLE INSCRIPTO</IVACondicion>
+<Cliente>DEMO LOGISTICS S.A.</Cliente>
+<Domicilio>AV. DEMO 100 PISO 1 OF 1 C1000AAA C.A.B.A. ARGENTINA</Domicilio>
+<CondicionVenta>Contado</CondicionVenta>
+<BuqueViaje>ATLANTIC STAR 0116</BuqueViaje>
+<PorCuenta>Atlantic Maritime Agency</PorCuenta>
+<Conocimiento>S3-99990001</Conocimiento>
+<ImporteGravado>500</ImporteGravado>
+<ImporteNoGravado>800</ImporteNoGravado>
+<ImporteSubtotal>1300</ImporteSubtotal>
+<ImporteIvaRi>105</ImporteIvaRi>
+<ImporteIvaRni>0</ImporteIvaRni>
+<ImporteTotal>1405</ImporteTotal>
+<CodigoMoneda>DOL</CodigoMoneda>
+<CotizacionMoneda> 10.00000</CotizacionMoneda>
+<SubtotalIva>
+<Codigo>5</Codigo>
+<Importe>105</Importe>
+</SubtotalIva>
+<Cargos>
+<NumeroItem>1</NumeroItem>
+<Referencias>1 </Referencias>
+<Descripcion> Blockstowed Cargo Machinery 1      L: 15.495 W: 3.635 H: 3.555 MET WT: 22000 KGS Vol: 200.233 CuM.</Descripcion>
+<Item>
+<UnidadesMtx>1</UnidadesMtx>
+<CodigoMtx></CodigoMtx>
+<CodigoItem>TS_POD</CodigoItem>
+<ItemDescripcion>Toll S/C(POD)</ItemDescripcion>
+<ImpoExpo>I</ImpoExpo>
+<TarifaDescripcion>Metric Ton</TarifaDescripcion>
+<PrecioUnitario>12.00</PrecioUnitario>
+<Cantidad>22.000 </Cantidad>
+<CodigoUnidadMedida>7</CodigoUnidadMedida>
+<PrecioUnitario>12.00</PrecioUnitario>
+<CodigoCondicionIva>1</CodigoCondicionIva>
+<ImporteIva>0.00</ImporteIva>
+<ImporteItem>202.00</ImporteItem>
+</Item>
+<Item>
+<UnidadesMtx>1</UnidadesMtx>
+<CodigoMtx></CodigoMtx>
+<CodigoItem>DO</CodigoItem>
+<ItemDescripcion>Delivery Order</ItemDescripcion>
+<ImpoExpo>I</ImpoExpo>
+<TarifaDescripcion>Metric Ton</TarifaDescripcion>
+<PrecioUnitario>13.00</PrecioUnitario>
+<Cantidad>24.000 </Cantidad>
+<CodigoUnidadMedida>7</CodigoUnidadMedida>
+<PrecioUnitario>13.00</PrecioUnitario>
+<CodigoCondicionIva>5</CodigoCondicionIva>
+<ImporteIva>34.00</ImporteIva>
+<ImporteItem>162.00</ImporteItem>
+</Item>
+<Item>
+<UnidadesMtx>1</UnidadesMtx>
+<CodigoMtx></CodigoMtx>
+<CodigoItem>DOCFEE_POD</CodigoItem>
+<ItemDescripcion>Doc Fee POD</ItemDescripcion>
+<ImpoExpo>I</ImpoExpo>
+<TarifaDescripcion>Per Shipment</TarifaDescripcion>
+<PrecioUnitario>52.00</PrecioUnitario>
+<Cantidad>1.000 </Cantidad>
+<CodigoUnidadMedida>7</CodigoUnidadMedida>
+<PrecioUnitario>52.00</PrecioUnitario>
+<CodigoCondicionIva>5</CodigoCondicionIva>
+<ImporteIva>9.00</ImporteIva>
+<ImporteItem>52.00</ImporteItem>
+</Item>
+<Item>
+<UnidadesMtx>1</UnidadesMtx>
+<CodigoMtx></CodigoMtx>
+<CodigoItem>FCX</CodigoItem>
+<ItemDescripcion>Freight Cert.</ItemDescripcion>
+<ImpoExpo>I</ImpoExpo>
+<TarifaDescripcion>Per Shipment</TarifaDescripcion>
+<PrecioUnitario>42.00</PrecioUnitario>
+<Cantidad>1.000 </Cantidad>
+<CodigoUnidadMedida>7</CodigoUnidadMedida>
+<PrecioUnitario>42.00</PrecioUnitario>
+<CodigoCondicionIva>5</CodigoCondicionIva>
+<ImporteIva>8.00</ImporteIva>
+<ImporteItem>42.00</ImporteItem>
+</Item>
+<NumeroItem>2</NumeroItem>
+<Referencias>2 </Referencias>
+<Descripcion> Blockstowed Cargo Machinery 2      L: 7.727 W: 3.2 H: 3.555 MET WT: 13880 KGS Vol: 175.805 CuM.</Descripcion>
+<Item>
+<UnidadesMtx>1</UnidadesMtx>
+<CodigoMtx></CodigoMtx>
+<CodigoItem>TS_POD</CodigoItem>
+<ItemDescripcion>Toll S/C(POD)</ItemDescripcion>
+<ImpoExpo>I</ImpoExpo>
+<TarifaDescripcion>Metric Ton</TarifaDescripcion>
+<PrecioUnitario>12.00</PrecioUnitario>
+<Cantidad>13.880 </Cantidad>
+<CodigoUnidadMedida>7</CodigoUnidadMedida>
+<PrecioUnitario>12.00</PrecioUnitario>
+<CodigoCondicionIva>1</CodigoCondicionIva>
+<ImporteIva>0.00</ImporteIva>
+<ImporteItem>122.00</ImporteItem>
+</Item>
+<NumeroItem>3</NumeroItem>
+<Referencias>1 40</Referencias>
+<Descripcion>40 ft. High Cube Machinery (FSCU9925905)</Descripcion>
+<Item>
+<UnidadesMtx>1</UnidadesMtx>
+<CodigoMtx></CodigoMtx>
+<CodigoItem>Logcoord</CodigoItem>
+<ItemDescripcion>Logistic Coord</ItemDescripcion>
+<ImpoExpo>I</ImpoExpo>
+<TarifaDescripcion>40 Ft Cntr</TarifaDescripcion>
+<PrecioUnitario>32.00</PrecioUnitario>
+<Cantidad>1.000 </Cantidad>
+<CodigoUnidadMedida>7</CodigoUnidadMedida>
+<PrecioUnitario>32.00</PrecioUnitario>
+<CodigoCondicionIva>5</CodigoCondicionIva>
+<ImporteIva>6.00</ImporteIva>
+<ImporteItem>32.00</ImporteItem>
+</Item>
+<Item>
+<UnidadesMtx>1</UnidadesMtx>
+<CodigoMtx></CodigoMtx>
+<CodigoItem>DO</CodigoItem>
+<ItemDescripcion>Delivery Order</ItemDescripcion>
+<ImpoExpo>I</ImpoExpo>
+<TarifaDescripcion>40 Ft Cntr</TarifaDescripcion>
+<PrecioUnitario>52.00</PrecioUnitario>
+<Cantidad>1.000 </Cantidad>
+<CodigoUnidadMedida>7</CodigoUnidadMedida>
+<PrecioUnitario>52.00</PrecioUnitario>
+<CodigoCondicionIva>5</CodigoCondicionIva>
+<ImporteIva>9.00</ImporteIva>
+<ImporteItem>52.00</ImporteItem>
+</Item>
+<Item>
+<UnidadesMtx>1</UnidadesMtx>
+<CodigoMtx></CodigoMtx>
+<CodigoItem>DT</CodigoItem>
+<ItemDescripcion>THC (POD)</ItemDescripcion>
+<ImpoExpo>I</ImpoExpo>
+<TarifaDescripcion>40 Ft Cntr</TarifaDescripcion>
+<PrecioUnitario>102.00</PrecioUnitario>
+<Cantidad>1.000 </Cantidad>
+<CodigoUnidadMedida>7</CodigoUnidadMedida>
+<PrecioUnitario>102.00</PrecioUnitario>
+<CodigoCondicionIva>1</CodigoCondicionIva>
+<ImporteIva>0.00</ImporteIva>
+<ImporteItem>102.00</ImporteItem>
+</Item>
+<Item>
+<UnidadesMtx>1</UnidadesMtx>
+<CodigoMtx></CodigoMtx>
+<CodigoItem>HAND_POD</CodigoItem>
+<ItemDescripcion>Handling Chg POD</ItemDescripcion>
+<ImpoExpo>I</ImpoExpo>
+<TarifaDescripcion>40 Ft Cntr</TarifaDescripcion>
+<PrecioUnitario>32.00</PrecioUnitario>
+<Cantidad>1.000 </Cantidad>
+<CodigoUnidadMedida>7</CodigoUnidadMedida>
+<PrecioUnitario>32.00</PrecioUnitario>
+<CodigoCondicionIva>5</CodigoCondicionIva>
+<ImporteIva>6.00</ImporteIva>
+<ImporteItem>32.00</ImporteItem>
+</Item>
+<Item>
+<UnidadesMtx>1</UnidadesMtx>
+<CodigoMtx></CodigoMtx>
+<CodigoItem>SWE</CodigoItem>
+<ItemDescripcion>Sweeping</ItemDescripcion>
+<ImpoExpo>I</ImpoExpo>
+<TarifaDescripcion>40 Ft Cntr</TarifaDescripcion>
+<PrecioUnitario>17.00</PrecioUnitario>
+<Cantidad>1.000 </Cantidad>
+<CodigoUnidadMedida>7</CodigoUnidadMedida>
+<PrecioUnitario>17.00</PrecioUnitario>
+<CodigoCondicionIva>5</CodigoCondicionIva>
+<ImporteIva>3.00</ImporteIva>
+<ImporteItem>17.00</ImporteItem>
+</Item>
+<Item>
+<UnidadesMtx>1</UnidadesMtx>
+<CodigoMtx></CodigoMtx>
+<CodigoItem>TS_POD</CodigoItem>
+<ItemDescripcion>Toll S/C(POD)</ItemDescripcion>
+<ImpoExpo>I</ImpoExpo>
+<TarifaDescripcion>40 Ft Cntr</TarifaDescripcion>
+<PrecioUnitario>92.00</PrecioUnitario>
+<Cantidad>1.000 </Cantidad>
+<CodigoUnidadMedida>7</CodigoUnidadMedida>
+<PrecioUnitario>92.00</PrecioUnitario>
+<CodigoCondicionIva>1</CodigoCondicionIva>
+<ImporteIva>0.00</ImporteIva>
+<ImporteItem>92.00</ImporteItem>
+</Item>
+</Cargos>
+<Attachment>
+</Attachment>
+</Comprobante>

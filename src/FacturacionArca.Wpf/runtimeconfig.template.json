@@ -1,0 +1,6 @@
+{
+  "rollForward": "Major",
+  "configProperties": {
+    "System.Globalization.Invariant": false
+  }
+}

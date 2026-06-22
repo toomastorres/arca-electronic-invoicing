@@ -1,0 +1,32 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup .NET 8
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
+
+      - name: Restore
+        run: dotnet restore src/FacturacionArca.Tests/FacturacionArca.Tests.csproj
+
+      - name: Test
+        run: dotnet test src/FacturacionArca.Tests/FacturacionArca.Tests.csproj --configuration Release --no-restore --verbosity normal
+
+      - name: Publicar PDF de muestra
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: sample-invoice-pdf
+          path: src/FacturacionArca.Tests/bin/Release/**/PdfSalida/*.pdf
+          if-no-files-found: warn

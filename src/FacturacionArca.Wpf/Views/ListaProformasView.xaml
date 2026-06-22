@@ -1,0 +1,37 @@
+<UserControl x:Class="FacturacionArca.Wpf.Views.ListaProformasView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <DockPanel>
+    <StackPanel Orientation="Horizontal" DockPanel.Dock="Top" Margin="0,0,0,6">
+      <Button Content="..." ToolTip="Importar XML manualmente"
+              Click="ImportarManualClick" Padding="14,4" FontWeight="Bold"/>
+      <CheckBox Content="Sólo pendientes" IsChecked="{Binding SoloPendientes}"
+                VerticalAlignment="Center" Margin="12,0"/>
+      <Button Content="Refrescar" Command="{Binding RefrescarCommand}"/>
+      <TextBlock Text="{Binding MensajeEstado}" Margin="20,0" Foreground="DarkSlateGray"/>
+    </StackPanel>
+
+    <Grid>
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="2*"/>
+        <ColumnDefinition Width="3*"/>
+      </Grid.ColumnDefinitions>
+
+      <DataGrid Grid.Column="0"
+                ItemsSource="{Binding Proformas}"
+                SelectedItem="{Binding SelectedProforma, Mode=TwoWay}"
+                AutoGenerateColumns="False" IsReadOnly="True" SelectionMode="Single">
+        <DataGrid.Columns>
+          <DataGridTextColumn Header="Proforma" Binding="{Binding NumeroProforma}"/>
+          <DataGridTextColumn Header="Tipo" Binding="{Binding CodigoTipoComprobanteOrigen}"/>
+          <DataGridTextColumn Header="Cliente" Binding="{Binding Cliente}" Width="*"/>
+          <DataGridTextColumn Header="Total" Binding="{Binding ImporteTotal, StringFormat=N2}"/>
+          <DataGridTextColumn Header="Mon" Binding="{Binding CodigoMoneda}"/>
+          <DataGridTextColumn Header="Estado" Binding="{Binding Estado}"/>
+        </DataGrid.Columns>
+      </DataGrid>
+
+      <ContentControl x:Name="DetallePanel" Grid.Column="1" Margin="8,0,0,0"/>
+    </Grid>
+  </DockPanel>
+</UserControl>

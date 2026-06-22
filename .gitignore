@@ -1,0 +1,42 @@
+# Build .NET
+bin/
+obj/
+[Dd]ebug/
+[Rr]elease/
+*.user
+.vs/
+
+# Base de datos local (datos operativos)
+*.db
+*.db-shm
+*.db-wal
+*.sqlite
+
+# Certificados y secretos — NUNCA versionar
+*.pfx
+*.p12
+*.key
+*.crt
+*.cer
+*.pem
+.env
+.env.*
+!.env.example
+
+# Datos fiscales reales (XMLs de entrada/salida, PDFs emitidos)
+**/Invoice/In/
+**/Invoice/Out/
+**/Invoice/AFIP/
+BORRADORES/
+Publicacion_Final/
+*.pdf
+!docs/**/*.pdf
+
+# Settings locales de herramientas
+.claude/
+.agents/
+
+# IDE / OS
+.idea/
+.DS_Store
+Thumbs.db

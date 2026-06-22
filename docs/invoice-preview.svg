@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 600" width="760" height="600" font-family="Segoe UI, Arial, sans-serif" role="img" aria-label="Vista previa de la factura generada">
+  <rect width="760" height="600" fill="#e9edf2"/>
+  <!-- hoja -->
+  <rect x="40" y="24" width="680" height="552" rx="4" fill="#ffffff" stroke="#d4dae2"/>
+
+  <!-- encabezado emisor / tipo / receptor -->
+  <text x="64" y="60" fill="#1e3a5f" font-size="17" font-weight="800">ATLANTIC MARITIME AGENCY S.A.</text>
+  <text x="64" y="80" fill="#475569" font-size="10">Av. del Puerto 1000 - 1° Piso (C1002ABP)</text>
+  <text x="64" y="94" fill="#475569" font-size="10">Buenos Aires - Argentina</text>
+  <text x="64" y="114" fill="#475569" font-size="10">I.V.A. Responsable Inscripto · CUIT 30-71111111-7</text>
+
+  <!-- caja tipo B -->
+  <rect x="356" y="44" width="48" height="48" fill="#fff" stroke="#1e3a5f" stroke-width="1.5"/>
+  <text x="380" y="80" fill="#1e3a5f" font-size="30" font-weight="800" text-anchor="middle">B</text>
+  <text x="380" y="90" fill="#475569" font-size="7" text-anchor="middle">COD. 06</text>
+
+  <text x="700" y="58" fill="#1e3a5f" font-size="15" font-weight="800" text-anchor="end">FACTURA</text>
+  <text x="700" y="78" fill="#334155" font-size="11" text-anchor="end">Punto de Venta: 0004</text>
+  <text x="700" y="94" fill="#334155" font-size="11" text-anchor="end">Comp. Nro: 00002438</text>
+  <text x="700" y="110" fill="#334155" font-size="11" text-anchor="end">Fecha: 30/04/2026</text>
+
+  <line x1="64" y1="128" x2="696" y2="128" stroke="#e2e8f0"/>
+
+  <!-- receptor -->
+  <text x="64" y="150" fill="#64748b" font-size="10">Cliente</text>
+  <text x="64" y="168" fill="#1a1a1a" font-size="12" font-weight="700">DEMO PAPER PACKAGING S.A.</text>
+  <text x="64" y="184" fill="#475569" font-size="10">Av. Demo 300, C.A.B.A. · Consumidor Final</text>
+  <text x="430" y="150" fill="#64748b" font-size="10">Operación</text>
+  <text x="430" y="168" fill="#334155" font-size="11">Buque/Viaje: ATLANTIC STAR 0226</text>
+  <text x="430" y="184" fill="#334155" font-size="11">Conocimiento: S3-99990003 · Moneda: USD</text>
+
+  <!-- tabla de items -->
+  <rect x="64" y="200" width="632" height="22" fill="#1e3a5f"/>
+  <g fill="#fff" font-size="10">
+    <text x="74" y="215">Descripción</text>
+    <text x="470" y="215">Cant.</text>
+    <text x="530" y="215">P. Unit.</text>
+    <text x="690" y="215" text-anchor="end">Importe</text>
+  </g>
+  <g fill="#334155" font-size="10.5">
+    <text x="74" y="244">40 ft. High Cube Paper Rolls — Sweeping</text>
+    <text x="470" y="244">8,00</text><text x="530" y="244">100,00</text><text x="690" y="244" text-anchor="end">800,00</text>
+    <text x="74" y="270">40 ft. High Cube Paper Rolls — Sealing Cost</text>
+    <text x="470" y="270">8,00</text><text x="530" y="270">50,00</text><text x="690" y="270" text-anchor="end">400,00</text>
+  </g>
+  <line x1="64" y1="254" x2="696" y2="254" stroke="#eef2f7"/>
+  <line x1="64" y1="288" x2="696" y2="288" stroke="#e2e8f0"/>
+
+  <!-- totales -->
+  <g font-size="11">
+    <text x="540" y="312" fill="#64748b" text-anchor="end">Subtotal</text>
+    <text x="690" y="312" fill="#334155" text-anchor="end">USD 1.200,00</text>
+    <text x="540" y="332" fill="#64748b" text-anchor="end">IVA</text>
+    <text x="690" y="332" fill="#334155" text-anchor="end">USD 0,00</text>
+  </g>
+  <rect x="430" y="344" width="266" height="30" rx="4" fill="#f1f5f9"/>
+  <text x="446" y="364" fill="#1e3a5f" font-size="13" font-weight="800">TOTAL</text>
+  <text x="690" y="364" fill="#1e3a5f" font-size="13" font-weight="800" text-anchor="end">USD 1.200,00</text>
+
+  <!-- QR + CAE -->
+  <rect x="64" y="400" width="92" height="92" fill="#fff" stroke="#1e3a5f"/>
+  <!-- QR estilizado -->
+  <g fill="#1e3a5f">
+    <rect x="72" y="408" width="22" height="22"/><rect x="126" y="408" width="22" height="22"/><rect x="72" y="462" width="22" height="22"/>
+    <rect x="78" y="414" width="10" height="10" fill="#fff"/><rect x="132" y="414" width="10" height="10" fill="#fff"/><rect x="78" y="468" width="10" height="10" fill="#fff"/>
+    <rect x="104" y="408" width="6" height="6"/><rect x="114" y="418" width="6" height="6"/><rect x="104" y="430" width="6" height="6"/>
+    <rect x="126" y="440" width="6" height="6"/><rect x="138" y="450" width="6" height="6"/><rect x="110" y="462" width="6" height="6"/>
+    <rect x="126" y="472" width="6" height="6"/><rect x="140" y="468" width="6" height="6"/><rect x="104" y="450" width="6" height="6"/>
+  </g>
+  <text x="170" y="416" fill="#64748b" font-size="10">Comprobante autorizado · AFIP/ARCA</text>
+  <text x="170" y="436" fill="#334155" font-size="11">CAE N°: 00000000000000</text>
+  <text x="170" y="454" fill="#334155" font-size="11">Vto. CAE: 10/05/2026</text>
+  <text x="170" y="480" fill="#94a3b8" font-size="9">PDF generado por el motor (datos sintéticos, homologación).</text>
+</svg>

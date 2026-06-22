@@ -1,0 +1,54 @@
+<!-- Fixture de prueba. Los MONTOS son ILUSTRATIVOS: no son los valores originales,
+     sólo sirven para demostrar el funcionamiento del programa. -->
+<Comprobante>
+<Proforma>2016T0000058</Proforma>
+<CodigoTipoComprobante>3</CodigoTipoComprobante>
+<NumeroPuntoventa></NumeroPuntoVenta>
+<NumeroComprobante></NumeroComprobante>
+<FechaEmision>11/03/2016</FechaEmision>
+<CodigoTipoDocumento>80</CodigoTipoDocumento>
+<NumeroDocumento>30722222227</NumeroDocumento>
+<IVACondicion>RESPONSABLE INSCRIPTO</IVACondicion>
+<Cliente>DEMO MOTORS S.A.</Cliente>
+<Domicilio>AV. DEMO 200 C1100BBB C.A.B.A. ARGENTINA</Domicilio>
+<CondicionVenta>Contado</CondicionVenta>
+<BuqueViaje>ATLANTIC NEBULA 0116</BuqueViaje>
+<PorCuenta>Atlantic Maritime Agency</PorCuenta>
+<Conocimiento>S3-99990002</Conocimiento>
+<ImporteGravado>-50.00</ImporteGravado>
+<ImporteNoGravado>0</ImporteNoGravado>
+<ImporteSubtotal>-50.00</ImporteSubtotal>
+<ImporteIvaRi>-10.50</ImporteIvaRi>
+<ImporteIvaRni>0</ImporteIvaRni>
+<ImporteTotal>-60.50</ImporteTotal>
+<CodigoMoneda>PES</CodigoMoneda>
+<CotizacionMoneda>  1.00000</CotizacionMoneda>
+<ComprobanteAsociado>
+<CodigoTipoComprobante></CodigoTipoComprobante>
+<NumeroPuntoVenta></NumeroPuntoVenta>
+<NumeroComprobante></NumeroComprobante>
+</ComprobanteAsociado>
+<SubtotalIva>
+<Codigo>5</Codigo>
+<Importe>-10.50</Importe>
+</SubtotalIva>
+<Cargos>
+<Item>
+<UnidadesMtx>1</UnidadesMtx>
+<CodigoMtx></CodigoMtx>
+<CodigoItem></CodigoItem>
+<ItemDescripcion>ROE Difference - 40002 (AGENCY)</ItemDescripcion>
+<ImpoExpo>I</ImpoExpo>
+<TarifaDescripcion>As Agreed</TarifaDescripcion>
+<PrecioUnitario>-50.00</PrecioUnitario>
+<Cantidad>1.000 </Cantidad>
+<CodigoUnidadMedida>7</CodigoUnidadMedida>
+<PrecioUnitario>-50.00</PrecioUnitario>
+<CodigoCondicionIva>5</CodigoCondicionIva>
+<ImporteIva>-10.50</ImporteIva>
+<ImporteItem>-50.00</ImporteItem>
+</Item>
+</Cargos>
+<Attachment>
+</Attachment>
+</Comprobante>

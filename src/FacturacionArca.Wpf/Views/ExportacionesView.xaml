@@ -1,0 +1,67 @@
+<UserControl x:Class="FacturacionArca.Wpf.Views.ExportacionesView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <ScrollViewer VerticalScrollBarVisibility="Auto">
+    <StackPanel Margin="8">
+
+      <GroupBox Header="Período">
+        <StackPanel Orientation="Horizontal" Margin="6">
+          <TextBlock Text="Desde:" VerticalAlignment="Center" Margin="0,0,4,0"/>
+          <DatePicker SelectedDate="{Binding FechaDesde}" Width="130"/>
+          <TextBlock Text="Hasta:" VerticalAlignment="Center" Margin="14,0,4,0"/>
+          <DatePicker SelectedDate="{Binding FechaHasta}" Width="130"/>
+        </StackPanel>
+      </GroupBox>
+
+      <GroupBox Header="Libro IVA Ventas (CSV / Excel)" Margin="0,8,0,0">
+        <StackPanel Margin="6">
+          <TextBlock TextWrapping="Wrap"
+                     Text="Genera un archivo CSV con todos los comprobantes autorizados en el período. Incluye gravado, no gravado, IVA discriminado por alícuota, percepción IIBB, total en moneda original y ARS, CAE y vencimiento. Compatible con Excel ES-AR."/>
+          <Button Content="Exportar Libro IVA Ventas..." Command="{Binding ExportarLibroIvaVentasCommand}"
+                  Padding="12,4" Margin="0,8,0,0" HorizontalAlignment="Left" FontWeight="Bold"/>
+        </StackPanel>
+      </GroupBox>
+
+      <GroupBox Header="Percepciones AGIP IIBB CABA (TXT para estudio contable)" Margin="0,8,0,0">
+        <StackPanel Margin="6">
+          <TextBlock TextWrapping="Wrap"
+                     Text="Genera DOS archivos TXT con anchos fijos AGIP: uno con percepciones de Facturas/ND y otro con devoluciones de NC. Solo incluye comprobantes con percepción IIBB CABA &gt; 0."/>
+          <Button Content="Exportar percepciones AGIP..." Command="{Binding ExportarAgipPercepcionesCommand}"
+                  Padding="12,4" Margin="0,8,0,0" HorizontalAlignment="Left" FontWeight="Bold"/>
+        </StackPanel>
+      </GroupBox>
+
+      <GroupBox Header="Padrón AGIP IIBB CABA" Margin="0,8,0,0">
+        <StackPanel Margin="6">
+          <TextBlock TextWrapping="Wrap"
+                     Text="Importar el padrón AGIP (archivo ARDJUYYYYMMDD.TXT publicado mensualmente). Permite calcular automáticamente la alícuota de percepción IIBB CABA por CUIT del receptor."/>
+          <Grid Margin="0,8,0,0">
+            <Grid.ColumnDefinitions>
+              <ColumnDefinition Width="*"/>
+              <ColumnDefinition Width="Auto"/>
+              <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <TextBox Grid.Column="0" Text="{Binding PadronArchivoSeleccionado}" Margin="0,0,4,0" IsReadOnly="True"/>
+            <Button Grid.Column="1" Content="..." Command="{Binding SeleccionarPadronCommand}" Padding="10,4" Margin="0,0,4,0"/>
+            <Button Grid.Column="2" Content="Importar" Command="{Binding ImportarPadronCommand}" Padding="14,4" FontWeight="Bold"/>
+          </Grid>
+          <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+            <TextBlock Text="Cargados:" Margin="0,0,4,0"/>
+            <TextBlock Text="{Binding PadronCargados, StringFormat=N0}" FontWeight="Bold"/>
+            <TextBlock Text="Última publicación:" Margin="20,0,4,0"/>
+            <TextBlock Text="{Binding PadronUltimaPublicacion, StringFormat=dd/MM/yyyy}" FontWeight="Bold"/>
+          </StackPanel>
+          <ProgressBar Height="6" Margin="0,4,0,0" Maximum="2000000" Value="{Binding PadronProgreso}"/>
+        </StackPanel>
+      </GroupBox>
+
+      <Border Margin="0,12,0,0" Padding="8" Background="#FFF8DC" BorderThickness="1" BorderBrush="#DDD"
+              Visibility="{Binding Mensaje, Converter={StaticResource StringToVisibilityConverter}, FallbackValue=Collapsed}">
+        <TextBlock Text="{Binding Mensaje}" TextWrapping="Wrap"/>
+      </Border>
+
+      <ProgressBar Height="3" Margin="0,4,0,0" IsIndeterminate="True"
+                   Visibility="{Binding Trabajando, Converter={StaticResource BoolToVisibilityConverter}, FallbackValue=Collapsed}"/>
+    </StackPanel>
+  </ScrollViewer>
+</UserControl>

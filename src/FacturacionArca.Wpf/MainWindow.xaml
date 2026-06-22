@@ -1,0 +1,76 @@
+<Window x:Class="FacturacionArca.Wpf.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="clr-namespace:FacturacionArca.Wpf.ViewModels"
+        xmlns:views="clr-namespace:FacturacionArca.Wpf.Views"
+        Title="Facturación Electrónica ARCA" Height="720" Width="1180"
+        WindowStartupLocation="CenterScreen">
+  <Window.Resources>
+    <DataTemplate DataType="{x:Type vm:ListaProformasViewModel}">
+      <views:ListaProformasView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:HistorialComprobantesViewModel}">
+      <views:HistorialComprobantesView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:ConfiguracionViewModel}">
+      <views:ConfiguracionView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:ExportacionesViewModel}">
+      <views:ExportacionesView/>
+    </DataTemplate>
+  </Window.Resources>
+
+  <Grid>
+    <DockPanel>
+      <Menu DockPanel.Dock="Top">
+        <MenuItem Header="_Vistas">
+          <MenuItem Header="_Proformas" Command="{Binding ShowProformasCommand}"/>
+          <MenuItem Header="_Historial" Command="{Binding ShowHistorialCommand}"/>
+          <MenuItem Header="_Reportes y Padrones" Command="{Binding ShowExportacionesCommand}"/>
+          <MenuItem Header="_Configuración" Command="{Binding ShowConfiguracionCommand}"/>
+        </MenuItem>
+      </Menu>
+      <ContentControl Content="{Binding CurrentView}" Margin="8"/>
+    </DockPanel>
+
+    <!-- ═══ Panel de notificaciones Toast — esquina superior derecha ═══ -->
+    <ItemsControl ItemsSource="{Binding Notificaciones.Toasts}"
+                  HorizontalAlignment="Right" VerticalAlignment="Top"
+                  Margin="0,36,12,0" Width="420" IsHitTestVisible="True">
+      <ItemsControl.ItemTemplate>
+        <DataTemplate DataType="{x:Type vm:NotificacionToastItem}">
+          <Border Margin="0,0,0,6" Padding="10,8"
+                  BorderThickness="1,1,1,3"
+                  BorderBrush="{Binding ColorBorde}"
+                  Background="{Binding ColorFondo}"
+                  CornerRadius="6">
+            <Border.Effect>
+              <DropShadowEffect ShadowDepth="2" BlurRadius="6" Opacity="0.2"/>
+            </Border.Effect>
+            <StackPanel>
+              <StackPanel Orientation="Horizontal" Margin="0,0,0,2">
+                <TextBlock Text="{Binding Icono}" FontSize="14" Margin="0,0,6,0"/>
+                <TextBlock Text="{Binding Notificacion.Titulo}" FontWeight="Bold" FontSize="12"/>
+                <TextBlock Text="{Binding Notificacion.TimestampReal, StringFormat=HH:mm:ss}"
+                           Foreground="#999" FontSize="10" Margin="10,2,0,0"/>
+              </StackPanel>
+              <TextBlock Text="{Binding Notificacion.Mensaje}" TextWrapping="Wrap" FontSize="11"
+                         Foreground="#333"/>
+              <!-- Código de error y acción sugerida -->
+              <TextBlock Visibility="{Binding Notificacion.CodigoError, Converter={StaticResource StringToVisibilityConverter}}"
+                         Margin="0,4,0,0" FontSize="10" Foreground="#666">
+                <Run Text="Código:" FontWeight="Bold"/>
+                <Run Text="{Binding Notificacion.CodigoError}"/>
+              </TextBlock>
+              <TextBlock Visibility="{Binding Notificacion.AccionSugerida, Converter={StaticResource StringToVisibilityConverter}}"
+                         Margin="0,2,0,0" FontSize="10" Foreground="#1565C0" TextWrapping="Wrap">
+                <Run Text="💡" />
+                <Run Text="{Binding Notificacion.AccionSugerida}"/>
+              </TextBlock>
+            </StackPanel>
+          </Border>
+        </DataTemplate>
+      </ItemsControl.ItemTemplate>
+    </ItemsControl>
+  </Grid>
+</Window>

@@ -1,0 +1,237 @@
+<UserControl x:Class="FacturacionArca.Wpf.Views.DetalleProformaView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:FacturacionArca.Wpf">
+  <DockPanel>
+    <Border DockPanel.Dock="Top" Background="#F5F5F5" Padding="8" Margin="0,0,0,6" BorderThickness="1" BorderBrush="#CCC">
+      <StackPanel>
+        <TextBlock FontWeight="Bold" FontSize="14" Text="{Binding Proforma.Cliente}"/>
+        <TextBlock>
+          <Run Text="Proforma "/><Run Text="{Binding Proforma.NumeroProforma}" FontWeight="Bold"/>
+          <Run Text="  -  Tipo Cbte: "/><Run Text="{Binding Proforma.CodigoTipoComprobanteOrigen}"/>
+          <Run Text="  -  Documento: "/><Run Text="{Binding Proforma.NumeroDocumento}"/>
+          <Run Text="  -  IVA: "/><Run Text="{Binding Proforma.IvaCondicionTexto}"/>
+        </TextBlock>
+        <TextBlock>
+          <Run Text="Buque/Viaje: "/><Run Text="{Binding Proforma.BuqueViaje}"/>
+          <Run Text="  -  BL: "/><Run Text="{Binding Proforma.Conocimiento}"/>
+          <Run Text="  -  Por cuenta: "/><Run Text="{Binding Proforma.PorCuenta}"/>
+        </TextBlock>
+        <TextBlock>
+          <Run Text="Total: "/>
+          <Run Text="{Binding Proforma.CodigoMoneda}"/>
+          <Run Text=" "/>
+          <Run Text="{Binding Proforma.ImporteTotal, StringFormat=N2}" FontWeight="Bold"/>
+          <Run Text="  Cotiz: "/>
+          <Run Text="{Binding Proforma.CotizacionMoneda, StringFormat=N4}"/>
+        </TextBlock>
+      </StackPanel>
+    </Border>
+
+    <Border DockPanel.Dock="Top" Padding="8" Margin="0,0,0,6" BorderThickness="1" BorderBrush="#CCC">
+      <StackPanel>
+        <TextBlock FontWeight="Bold" Text="Datos de emisión"/>
+        <Grid Margin="0,4">
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="170"/>
+            <ColumnDefinition Width="220"/>
+            <ColumnDefinition Width="170"/>
+            <ColumnDefinition Width="*"/>
+          </Grid.ColumnDefinitions>
+          <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+          </Grid.RowDefinitions>
+
+          <TextBlock Grid.Row="0" Grid.Column="0" Text="Cond. IVA Receptor:"/>
+          <ComboBox Grid.Row="0" Grid.Column="1"
+                    ItemsSource="{Binding OpcionesCondicionIva}"
+                    SelectedItem="{Binding CondicionIvaOverride}"/>
+
+          <TextBlock Grid.Row="0" Grid.Column="2" Text="Ingresos Brutos:"/>
+          <ComboBox Grid.Row="0" Grid.Column="3"
+                    ItemsSource="{Binding OpcionesCondicionIIBB}"
+                    SelectedItem="{Binding CondicionIngresosBrutos}"/>
+
+          <TextBlock Grid.Row="1" Grid.Column="0" Text="Concepto:"/>
+          <ComboBox Grid.Row="1" Grid.Column="1"
+                    ItemsSource="{Binding OpcionesConcepto}"
+                    SelectedItem="{Binding Concepto}"/>
+
+          <TextBlock Grid.Row="1" Grid.Column="2" Text="Vto. de Pago:"/>
+          <DatePicker Grid.Row="1" Grid.Column="3" SelectedDate="{Binding FechaVencimientoPago}"/>
+
+          <TextBlock Grid.Row="2" Grid.Column="0" Text="Servicio Desde:"/>
+          <DatePicker Grid.Row="2" Grid.Column="1" SelectedDate="{Binding FechaServicioDesde}"/>
+          <TextBlock Grid.Row="2" Grid.Column="2" Text="Servicio Hasta:"/>
+          <DatePicker Grid.Row="2" Grid.Column="3" SelectedDate="{Binding FechaServicioHasta}"/>
+        </Grid>
+      </StackPanel>
+    </Border>
+
+    <Border DockPanel.Dock="Bottom" Padding="8" Margin="0,6,0,0" Background="#FFF8DC" BorderThickness="1" BorderBrush="#DDD">
+      <StackPanel>
+
+        <!-- Panel Percepción IIBB CABA (auto desde padrón) -->
+        <Border BorderThickness="1" BorderBrush="#CCC" Padding="6" Margin="0,0,0,6" Background="#F8F8F8">
+          <Grid>
+            <Grid.ColumnDefinitions>
+              <ColumnDefinition Width="220"/>
+              <ColumnDefinition Width="80"/>
+              <ColumnDefinition Width="100"/>
+              <ColumnDefinition Width="100"/>
+              <ColumnDefinition Width="120"/>
+              <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+              <RowDefinition/>
+              <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <CheckBox Grid.Row="0" Grid.Column="0"
+                      Content="Aplicar percepción IIBB CABA"
+                      IsChecked="{Binding AplicarPercepcionCaba}"
+                      VerticalAlignment="Center" FontWeight="Bold"/>
+            <TextBlock Grid.Row="0" Grid.Column="1" Text="Alícuota %:" HorizontalAlignment="Right"/>
+            <TextBox Grid.Row="0" Grid.Column="2" Margin="4,0"
+                     Text="{Binding AlicuotaPercepcionCaba, StringFormat=N2, UpdateSourceTrigger=PropertyChanged}"
+                     IsEnabled="{Binding PercepcionManual}"/>
+            <TextBlock Grid.Row="0" Grid.Column="3" Text="Importe ARS:" HorizontalAlignment="Right"/>
+            <TextBox Grid.Row="0" Grid.Column="4" Margin="4,0"
+                     Text="{Binding ImportePercepcionCaba, StringFormat=N2, UpdateSourceTrigger=PropertyChanged}"
+                     IsEnabled="{Binding PercepcionManual}"/>
+            <CheckBox Grid.Row="0" Grid.Column="5" Margin="8,0,0,0"
+                      Content="Editar manual" IsChecked="{Binding PercepcionManual}" VerticalAlignment="Center"/>
+
+            <TextBlock Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="6" Margin="0,4,0,0">
+              <Run Text="Origen: " FontWeight="Bold"/>
+              <Run Text="{Binding OrigenPercepcion}"/>
+            </TextBlock>
+          </Grid>
+        </Border>
+
+        <!-- Panel Tipo de Saldo (P/S) — solo si moneda extranjera -->
+        <Border BorderThickness="1" BorderBrush="#CCC" Padding="6" Margin="0,0,0,6" Background="#E8F4FF"
+                Visibility="{Binding RequiereTipoSaldo, Converter={StaticResource BoolToVisibilityConverter}}">
+          <StackPanel>
+            <TextBlock FontWeight="Bold" Text="Tipo de saldo solicitado por el cliente (no se transmite a ARCA)" Margin="0,0,0,4"/>
+            <StackPanel Orientation="Horizontal">
+              <RadioButton GroupName="TipoSaldo" Content="Tipo P — Pesificada (total fijo en ARS al CAE)"
+                           IsChecked="{Binding TipoSaldo, Converter={StaticResource EnumToBoolConverter}, ConverterParameter=Pesificado}"
+                           VerticalAlignment="Center" Margin="0,0,20,0"/>
+              <RadioButton GroupName="TipoSaldo" Content="Tipo S — Saldos (en moneda original)"
+                           IsChecked="{Binding TipoSaldo, Converter={StaticResource EnumToBoolConverter}, ConverterParameter=EnMonedaOriginal}"
+                           VerticalAlignment="Center"/>
+            </StackPanel>
+            <TextBlock TextWrapping="Wrap" Foreground="#666" FontSize="11" Margin="0,4,0,0"
+                       Text="Flag interno que el cliente puede pedir. Las NC/ND por diferencia de cambio las genera el ERP principal y llegan como XML al watcher."/>
+          </StackPanel>
+        </Border>
+
+        <!-- Panel Forzar como FCE — solo visible si el XML viene con tipo normal pero es convertible a FCE -->
+        <Border BorderThickness="2" BorderBrush="#FF8C00" Padding="6" Margin="0,0,0,6" Background="#FFF3E0"
+                Visibility="{Binding PuedeForzarFce, Converter={StaticResource BoolToVisibilityConverter}}">
+          <StackPanel>
+            <TextBlock Visibility="{Binding MostrarAvisoFce, Converter={StaticResource BoolToVisibilityConverter}}"
+                       Text="⚠️ ESTA FACTURA SUPERÓ EL LÍMITE OBLIGATORIO DE FACTURA DE CRÉDITO ELECTRÓNICA."
+                       FontWeight="Bold" Foreground="Red" FontSize="13" Margin="0,0,0,6"/>
+            <CheckBox Content="Forzar emisión como Factura de Crédito Electrónica MiPyME (FCE)"
+                      IsChecked="{Binding ForzarComoFce}"
+                      FontWeight="Bold" Foreground="#E65100"/>
+            <TextBlock TextWrapping="Wrap" Foreground="#666" FontSize="11" Margin="20,4,0,0"
+                       Text="Active esta opción para reclasificar esta factura hacia una FCE (ej: Factura A → FCE A 201)."/>
+          </StackPanel>
+        </Border>
+
+        <!-- Panel FCE — SCA/ADC + CBU + Alias -->
+        <Border BorderThickness="1" BorderBrush="#CCC" Padding="6" Margin="0,0,0,6" Background="#E8FFE8"
+                Visibility="{Binding EsFce, Converter={StaticResource BoolToVisibilityConverter}}">
+          <StackPanel>
+            <TextBlock FontWeight="Bold" Text="Factura de Crédito Electrónica MiPyMEs" Margin="0,0,0,4"/>
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,4">
+              <RadioButton GroupName="SCA" Content="SCA — Sistema de Circulación Abierta (Op. 27=S)"
+                           IsChecked="{Binding FceEsSCA}" VerticalAlignment="Center" Margin="0,0,20,0"/>
+              <RadioButton GroupName="SCA" Content="ADC — Agente Depósito Colectivo (Op. 27=N)"
+                           IsChecked="{Binding FceEsSCA, Converter={x:Static local:BooleanInverter.Instance}}"
+                           VerticalAlignment="Center"/>
+            </StackPanel>
+            <Grid>
+              <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="80"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="80"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="120"/>
+              </Grid.ColumnDefinitions>
+              <TextBlock Grid.Column="0" Text="CBU:"/>
+              <TextBox Grid.Column="1" Margin="2,0,12,0"
+                       Text="{Binding FceCbu, UpdateSourceTrigger=PropertyChanged}"/>
+              <TextBlock Grid.Column="2" Text="Alias:"/>
+              <TextBox Grid.Column="3" Margin="2,0,12,0"
+                       Text="{Binding FceAlias, UpdateSourceTrigger=PropertyChanged}"/>
+              <TextBlock Grid.Column="4" Text="Fecha de Vto:" FontWeight="Bold" Foreground="#005A9E"/>
+              <DatePicker Grid.Column="5" SelectedDate="{Binding FechaVencimientoPago}"/>
+            </Grid>
+          </StackPanel>
+        </Border>
+
+        <!-- Panel Comprobante Asociado (NC↔Factura) - solo visible si requiere -->
+        <Border BorderThickness="1" BorderBrush="#CCC" Padding="6" Margin="0,0,0,6" Background="#FFF4E0"
+                Visibility="{Binding RequiereAsociado, Converter={StaticResource BoolToVisibilityConverter}}">
+          <StackPanel>
+            <TextBlock FontWeight="Bold" Text="Factura asociada (vinculación fiscal NC/ND → Factura origen)" Margin="0,0,0,4"/>
+            <ComboBox ItemsSource="{Binding AsociadosDisponibles}"
+                      SelectedItem="{Binding AsociadoSeleccionado}"
+                      DisplayMemberPath="Display"
+                      Margin="0,0,0,4"/>
+            <Grid IsEnabled="{Binding AsociadoEditable}">
+              <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="60"/>
+                <ColumnDefinition Width="80"/>
+                <ColumnDefinition Width="80"/>
+                <ColumnDefinition Width="120"/>
+                <ColumnDefinition Width="80"/>
+                <ColumnDefinition Width="140"/>
+                <ColumnDefinition Width="80"/>
+                <ColumnDefinition Width="*"/>
+              </Grid.ColumnDefinitions>
+              <TextBlock Grid.Column="0" Text="Tipo:"/>
+              <TextBox Grid.Column="1" Margin="2,0"
+                       Text="{Binding AsociadoTipo, UpdateSourceTrigger=PropertyChanged}"/>
+              <TextBlock Grid.Column="2" Text="Pto.Vta:" HorizontalAlignment="Right"/>
+              <TextBox Grid.Column="3" Margin="2,0"
+                       Text="{Binding AsociadoPuntoVenta, UpdateSourceTrigger=PropertyChanged}"/>
+              <TextBlock Grid.Column="4" Text="Número:" HorizontalAlignment="Right"/>
+              <TextBox Grid.Column="5" Margin="2,0"
+                       Text="{Binding AsociadoNumero, UpdateSourceTrigger=PropertyChanged}"/>
+              <TextBlock Grid.Column="6" Text="Fecha (Asociado):" FontWeight="Bold" Foreground="DarkRed" HorizontalAlignment="Right" Margin="0,0,4,0"/>
+              <DatePicker Grid.Column="7" Margin="2,0" Background="#FFFFEE"
+                          SelectedDate="{Binding AsociadoFecha}"/>
+            </Grid>
+          </StackPanel>
+        </Border>
+
+        <Button Content="Envía Factura Electrónica"
+                Command="{Binding EnviarFacturaElectronicaCommand}"
+                IsEnabled="{Binding Emitiendo, Converter={x:Static local:BooleanInverter.Instance}}"
+                FontWeight="Bold" Padding="14,8" HorizontalAlignment="Right"/>
+        <TextBlock Text="{Binding MensajeEstado}" TextWrapping="Wrap" Margin="0,6,0,0" Foreground="DarkRed"/>
+      </StackPanel>
+    </Border>
+
+    <DataGrid ItemsSource="{Binding Proforma.Items}" AutoGenerateColumns="False" IsReadOnly="True">
+      <DataGrid.Columns>
+        <DataGridTextColumn Header="#" Binding="{Binding NumeroItem}"/>
+        <DataGridTextColumn Header="Código" Binding="{Binding CodigoItem}"/>
+        <DataGridTextColumn Header="Descripción" Binding="{Binding ItemDescripcion}" Width="*"/>
+        <DataGridTextColumn Header="Cant." Binding="{Binding Cantidad, StringFormat=N2}"/>
+        <DataGridTextColumn Header="P.U." Binding="{Binding PrecioUnitario, StringFormat=N2}"/>
+        <DataGridTextColumn Header="IVA" Binding="{Binding CodigoCondicionIva}"/>
+        <DataGridTextColumn Header="Importe" Binding="{Binding ImporteItem, StringFormat=N2}"/>
+      </DataGrid.Columns>
+    </DataGrid>
+  </DockPanel>
+</UserControl>

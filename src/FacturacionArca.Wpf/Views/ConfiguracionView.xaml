@@ -1,0 +1,109 @@
+<UserControl x:Class="FacturacionArca.Wpf.Views.ConfiguracionView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <ScrollViewer VerticalScrollBarVisibility="Auto">
+    <StackPanel Margin="6">
+      <GroupBox Header="Empresa">
+        <Grid Margin="6">
+          <Grid.RowDefinitions>
+            <RowDefinition/><RowDefinition/><RowDefinition/><RowDefinition/><RowDefinition/><RowDefinition/><RowDefinition/>
+          </Grid.RowDefinitions>
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="180"/><ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="180"/><ColumnDefinition Width="*"/>
+          </Grid.ColumnDefinitions>
+
+          <TextBlock Grid.Row="0" Grid.Column="0" Text="CUIT:"/>
+          <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding Configuracion.Cuit, UpdateSourceTrigger=PropertyChanged}"/>
+          <TextBlock Grid.Row="0" Grid.Column="2" Text="Razón social:"/>
+          <TextBox Grid.Row="0" Grid.Column="3" Text="{Binding Configuracion.RazonSocial, UpdateSourceTrigger=PropertyChanged}"/>
+
+          <TextBlock Grid.Row="1" Grid.Column="0" Text="Domicilio comercial:"/>
+          <TextBox Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3"
+                   Text="{Binding Configuracion.DomicilioComercial, UpdateSourceTrigger=PropertyChanged}"/>
+
+          <TextBlock Grid.Row="2" Grid.Column="0" Text="Cond. frente al IVA:"/>
+          <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding Configuracion.CondicionFrenteIva, UpdateSourceTrigger=PropertyChanged}"/>
+          <TextBlock Grid.Row="2" Grid.Column="2" Text="Inicio actividades:"/>
+          <DatePicker Grid.Row="2" Grid.Column="3" SelectedDate="{Binding Configuracion.InicioActividades}"/>
+
+          <TextBlock Grid.Row="3" Grid.Column="0" Text="IIBB / CM:"/>
+          <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding Configuracion.IngresosBrutos, UpdateSourceTrigger=PropertyChanged}"/>
+          <TextBlock Grid.Row="3" Grid.Column="2" Text="Convenio Multilateral:"/>
+          <CheckBox Grid.Row="3" Grid.Column="3" IsChecked="{Binding Configuracion.EsConvenioMultilateral}" VerticalAlignment="Center"/>
+
+          <TextBlock Grid.Row="4" Grid.Column="0" Text="Punto de venta:"/>
+          <TextBox Grid.Row="4" Grid.Column="1" Text="{Binding Configuracion.PuntoVentaPorDefecto}"/>
+          <TextBlock Grid.Row="4" Grid.Column="2" Text="Modo:"/>
+          <ComboBox Grid.Row="4" Grid.Column="3" ItemsSource="{Binding Modos}" SelectedItem="{Binding Configuracion.Modo}"/>
+
+          <!-- Fila 5: FCE Monto Mínimo -->
+          <TextBlock Grid.Row="5" Grid.Column="0" Text="Monto Mínimo FCE ($):"/>
+          <TextBox Grid.Row="5" Grid.Column="1" Text="{Binding Configuracion.MontoMinimoFce, UpdateSourceTrigger=PropertyChanged, StringFormat=F2}" FontWeight="Bold" Foreground="#D84315"/>
+
+          <!-- Fila 6: CBU -->
+          <TextBlock Grid.Row="6" Grid.Column="0" Text="CBU Pesos (en factura):"/>
+          <TextBox Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="3"
+                   Text="{Binding Configuracion.CbuPesos, UpdateSourceTrigger=PropertyChanged}"/>
+        </Grid>
+      </GroupBox>
+
+      <GroupBox Header="Certificado X.509">
+        <Grid Margin="6">
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="180"/><ColumnDefinition Width="*"/>
+          </Grid.ColumnDefinitions>
+          <Grid.RowDefinitions>
+            <RowDefinition/><RowDefinition/>
+          </Grid.RowDefinitions>
+          <TextBlock Grid.Row="0" Grid.Column="0" Text="Ruta del .pfx:"/>
+          <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding Configuracion.CertificadoPath, UpdateSourceTrigger=PropertyChanged}"/>
+          <TextBlock Grid.Row="1" Grid.Column="0" Text="Contraseña:"/>
+          <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Configuracion.CertificadoPassword, UpdateSourceTrigger=PropertyChanged}"/>
+        </Grid>
+      </GroupBox>
+
+      <GroupBox Header="Carpetas">
+        <Grid Margin="6">
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="180"/><ColumnDefinition Width="*"/>
+          </Grid.ColumnDefinitions>
+          <Grid.RowDefinitions>
+            <RowDefinition/><RowDefinition/><RowDefinition/><RowDefinition/>
+          </Grid.RowDefinitions>
+          <TextBlock Grid.Row="0" Grid.Column="0" Text="Proformas IN (vigilada):"/>
+          <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding Configuracion.CarpetaProformas, UpdateSourceTrigger=PropertyChanged}"/>
+          <TextBlock Grid.Row="1" Grid.Column="0" Text="Proformas OUT (procesadas):"/>
+          <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Configuracion.CarpetaProformasProcesadas, UpdateSourceTrigger=PropertyChanged}"/>
+          <TextBlock Grid.Row="2" Grid.Column="0" Text="Archivo fiscal AFIP (RG 1361):"/>
+          <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding Configuracion.CarpetaArchivoFiscal, UpdateSourceTrigger=PropertyChanged}"/>
+          <TextBlock Grid.Row="3" Grid.Column="0" Text="Salida PDF:"/>
+          <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding Configuracion.CarpetaPdfSalida, UpdateSourceTrigger=PropertyChanged}"/>
+        </Grid>
+      </GroupBox>
+
+      <GroupBox Header="Impresión">
+        <Grid Margin="6">
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="180"/><ColumnDefinition Width="*"/>
+          </Grid.ColumnDefinitions>
+          <Grid.RowDefinitions>
+            <RowDefinition/><RowDefinition/>
+          </Grid.RowDefinitions>
+          <TextBlock Grid.Row="0" Grid.Column="0" Text="Impresora por defecto:"/>
+          <ComboBox Grid.Row="0" Grid.Column="1" ItemsSource="{Binding Impresoras}"
+                    SelectedItem="{Binding Configuracion.ImpresoraPorDefecto}"/>
+          <TextBlock Grid.Row="1" Grid.Column="0" Text="Modo silencioso:"/>
+          <CheckBox Grid.Row="1" Grid.Column="1" IsChecked="{Binding Configuracion.ImpresionSilenciosa}"
+                    VerticalAlignment="Center"/>
+        </Grid>
+      </GroupBox>
+
+      <StackPanel Orientation="Horizontal" Margin="0,12,0,0">
+        <Button Content="Guardar" Command="{Binding GuardarCommand}" FontWeight="Bold" Padding="14,4"/>
+        <Button Content="Sincronizar maestros AFIP" Command="{Binding SincronizarMaestrosCommand}" Padding="14,4" Margin="6,0"/>
+        <TextBlock Text="{Binding Mensaje}" Margin="20,0" Foreground="DarkSlateGray" VerticalAlignment="Center"/>
+      </StackPanel>
+    </StackPanel>
+  </ScrollViewer>
+</UserControl>
